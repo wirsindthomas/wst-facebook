@@ -18,9 +18,9 @@
  */
 $fb = array();
 $fb['needed'] = true; //If false the Facebook API is not initialized - useful for development
-$fb['api_key'] = '';
-$fb['secret'] = '';
-$fb['user_login'] = true;
+$fb['api_key'] = ''; // facebook app apikey
+$fb['secret'] = ''; // facebook app secret
+$fb['user_login'] = true; // does your app need a logedin user
 
 /**
  * Configure your database connection. 

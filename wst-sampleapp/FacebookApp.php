@@ -18,8 +18,10 @@ require_once '../WST/facebook.php';
 
 class FacebookApp extends WST_Facebook{
 
+$hostname = 'http://HOSTNAME.TLD/wst-sampleapp';
+
 	function init(){
-		$this->view->assign('hostname','http://f8.niepi.org/wst-sampleapp');
+		$this->view->assign('hostname',$this->hostname);
 		$this->view->assign('fbuserid',$this->fbuserid);
 	}
 
