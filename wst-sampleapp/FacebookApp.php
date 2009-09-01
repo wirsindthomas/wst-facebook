@@ -1,5 +1,6 @@
+<?php
 /**
- * wst-facebook
+ * WST_Facebook
  *
  * LICENSE
  *
@@ -11,8 +12,6 @@
  * @copyright  Copyright (c) 2009 Thomas Niepraschk (me@thomas-niepraschk.net), Alexander fanatique* Thomas (me@alexander-thomas.net)
  * @license    http://creativecommons.org/licenses/LGPL/2.1/
  */
-
-<?php
 
 require_once '../WST/facebook.php';
 

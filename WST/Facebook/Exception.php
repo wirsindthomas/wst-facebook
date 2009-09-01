@@ -1,3 +1,4 @@
+<?php
 /**
  * wst-facebook
  *
@@ -12,7 +13,7 @@
  * @license    http://creativecommons.org/licenses/LGPL/2.1/
  */
 
-<?php
+
 class WST_Facebook_Exception extends Exception
 {
 	

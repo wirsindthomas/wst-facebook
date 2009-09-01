@@ -1,3 +1,4 @@
+<?php
 /**
  * wst-facebook
  *
@@ -12,7 +13,6 @@
  * @license    http://creativecommons.org/licenses/LGPL/2.1/
  */
 
-<?php
 /**
  * Configure your Facebook data
  */
@@ -35,11 +35,13 @@ $db['passwd'] = '';
 $db['name'] = 'mysql';
 $db['options'] = array('port'=> 3306, 'debug' => true);
 
+date_default_timezone_set('Europe/Vienna'); //Define the timezone (Mandatory scince PHP 5.3)
+
+
 
 ##################################################################
 # Relax. From here on we handle the rest for you.
 ##################################################################
-date_default_timezone_set('Europe/Vienna');
 
 /** Determine the environment and the include paths*/
 $dirname = dirname(__FILE__) . '/';
@@ -70,4 +72,3 @@ try{
 	$facebookapp->log('error', $e->getMessage());
 	$facebookapp->errorAction();
 }
-
