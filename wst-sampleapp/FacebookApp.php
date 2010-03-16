@@ -1,6 +1,6 @@
 <?php
 /**
- * wst-facebook
+ * WST_Facebook
  *
  * LICENSE
  *

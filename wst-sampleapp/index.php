@@ -1,5 +1,20 @@
 <?php
 /**
+ * wst-facebook
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new CC-GNU LGPL
+ * It is available through the world-wide-web at this URL:
+ * http://creativecommons.org/licenses/LGPL/2.1/
+ *
+ * @category   wst-facebook
+ * @copyright  Copyright (c) 2009 Thomas Niepraschk (me@thomas-niepraschk.net), Alexander fanatique* Thomas (me@alexander-thomas.net)
+ * @license    http://creativecommons.org/licenses/LGPL/2.1/
+ */
+
+>>>>>>> 50521d974dc4e75a0a6c90b0e0df3659c1f87b8c
+/**
  * Configure your Facebook data
  */
 $fb = array();
@@ -24,11 +39,13 @@ $db['passwd'] = '';
 $db['name'] = 'mysql';
 $db['options'] = array('port'=> 3306, 'debug' => true);
 
+date_default_timezone_set('Europe/Vienna'); //Define the timezone (Mandatory scince PHP 5.3)
+
+
 
 ##################################################################
 # Relax. From here on we handle the rest for you.
 ##################################################################
-date_default_timezone_set('Europe/Vienna');
 
 /** Determine the environment and the include paths*/
 $dirname = dirname(__FILE__) . '/';
@@ -59,4 +76,3 @@ try{
 	$facebookapp->log('error', $e->getMessage());
 	$facebookapp->errorAction();
 }
-
