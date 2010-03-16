@@ -1,3 +1,4 @@
+<?php
 /**
  * wst-facebook
  *
@@ -12,7 +13,6 @@
  * @license    http://creativecommons.org/licenses/LGPL/2.1/
  */
 
-<?php
 
 require_once 'Facebook/Exception.php';
 

@@ -1,26 +1,15 @@
-/**
- * wst-facebook
- *
- * LICENSE
- *
- * This source file is subject to the new CC-GNU LGPL
- * It is available through the world-wide-web at this URL:
- * http://creativecommons.org/licenses/LGPL/2.1/
- *
- * @category   wst-facebook
- * @copyright  Copyright (c) 2009 Thomas Niepraschk (me@thomas-niepraschk.net), Alexander fanatique* Thomas (me@alexander-thomas.net)
- * @license    http://creativecommons.org/licenses/LGPL/2.1/
- */
-
 <?php
 /**
  * Configure your Facebook data
  */
 $fb = array();
-$fb['needed'] = true; //If false the Facebook API is not initialized - useful for development
-$fb['api_key'] = ''; // facebook app apikey
-$fb['secret'] = ''; // facebook app secret
-$fb['user_login'] = true; // does your app need a logedin user
+$fb['needed'] = false; //If false the Facebook API is not initialized - useful for development
+$fb['api_key'] = '';
+$fb['secret'] = '';
+$fb['user_login'] = true;
+$fb['app_url'] = ''; // facebook app name
+$fb['base_url'] = ''; // url of your wst-facebook app
+
 
 /**
  * Configure your database connection. 
@@ -52,8 +41,8 @@ require_once 'FacebookApp.php';
 $facebookapp =  new FacebookApp();
 
 //Initialize Facebook API if needed.
-if($fb['needed'] === true){
-	$facebookapp->initFacebook($fb['api_key'], $fb['api_key'], $fb['user_login']);
+if($fb['needed'] == true){
+	$facebookapp->initFacebook($fb['api_key'], $fb['secret'], $fb['user_login'], $fb['base_url'],$fb['app_url']);
 }
 
 //Set up databae connection if needed.

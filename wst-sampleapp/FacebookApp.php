@@ -1,3 +1,4 @@
+<?php
 /**
  * wst-facebook
  *
@@ -12,21 +13,15 @@
  * @license    http://creativecommons.org/licenses/LGPL/2.1/
  */
 
-<?php
-
 require_once '../WST/facebook.php';
 
 class FacebookApp extends WST_Facebook{
 
-$hostname = 'http://HOSTNAME.TLD/wst-sampleapp';
-
 	function init(){
-		$this->view->assign('hostname',$this->hostname);
-		$this->view->assign('fbuserid',$this->fbuserid);
 	}
 
 	function indexAction(){
 		$this->render();
 	}
+
 }
- 
