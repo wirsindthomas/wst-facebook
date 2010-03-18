@@ -13,7 +13,6 @@
  * @license    http://creativecommons.org/licenses/LGPL/2.1/
  */
 
->>>>>>> 50521d974dc4e75a0a6c90b0e0df3659c1f87b8c
 /**
  * Configure your Facebook data
  */
