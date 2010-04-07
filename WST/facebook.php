@@ -1,6 +1,19 @@
 <?php
-
+/**
+ * WST_Facebook
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new CC-GNU LGPL
+ * It is available through the world-wide-web at this URL:
+ * http://creativecommons.org/licenses/LGPL/2.1/
+ *
+ * @category   wst-facebook
+ * @copyright  Copyright (c) 2009 Thomas Niepraschk (me@thomas-niepraschk.net), Alexander fanatique* Thomas (me@alexander-thomas.net)
+ * @license    http://creativecommons.org/licenses/LGPL/2.1/
+ */
 require_once 'Facebook/Exception.php';
+require_once 'Facebook/View.php';
 
 abstract class WST_Facebook {
 
@@ -14,7 +27,8 @@ abstract class WST_Facebook {
 
 	function __construct() {
 		$this->autoLoader();
-		$this->initSmarty();
+		// $this->initSmarty();
+		$this->initView();
 		$this->initLog();
 		$this->init();
 	}
@@ -27,7 +41,6 @@ abstract class WST_Facebook {
 
 	private function autoLoader(){
 		require_once 'facebook/facebook.php';
-		require_once 'smarty/Smarty.class.php';
 		require_once 'adodb5/adodb.inc.php';
 		require_once 'dBug.php';
 	}
@@ -51,9 +64,11 @@ abstract class WST_Facebook {
 			}
 			$this->base_url = $base_url;
 			$this->app_url = $app_url;
-			$this->view->assign('base_url', $base_url);
-			$this->view->assign('app_url', $this->app_url);			
-			$this->view->assign('fbuser',$this->fbuserid);
+			
+			$this->view->base_url = $base_url;
+			$this->view->app_url = $this->app_url;			
+
+			$this->view->fbuserid = $this->fbuserid;
 
 		}catch(WST_Facebook_Exception $e){
 			$facebookapp->log('error', $e->getMessage());
@@ -65,27 +80,14 @@ abstract class WST_Facebook {
 		$backtrace = debug_backtrace();
 		
 		$action = str_replace("Action", '', $backtrace[1]['function']);
-		
-		if ($action == 'admin'){
-			$this->view->assign('apptab', 'false');
-			$this->view->assign('admintab', 'true');
-		}
-		else{
-			$this->view->assign('apptab', 'true');
-			$this->view->assign('admintab', 'false');
-		
-		}
 
 		$backtrace = debug_backtrace();
-		$this->view->display($action.'.tpl');
+		$this->view->render($action);
 	}
 
-	final protected function initSmarty(){
-		$this->view = new Smarty();
-		$this->view->template_dir = 'views';
-		$this->view->compile_dir = 'views/c';
+	final protected function initView(){
+		$this->view = new WST_Facebook_View();
 	}
-
 
 	final public function initDB($dbDriver, $dbServer, $dbUser, $dbPasswd, $db, $options = array()){
 		$dsn = rawurlencode($dbDriver).'://'.rawurlencode($dbUser).':'.rawurlencode($dbPasswd).'@'.rawurlencode($dbServer).'/'.$db;
@@ -95,7 +97,7 @@ abstract class WST_Facebook {
 	}
 	
 	function errorAction(){
-		$this->view->assign('message', 'An error occured.');
+		$this->view->message = 'An error occured.';
 		$this->render();
 	}
 	
